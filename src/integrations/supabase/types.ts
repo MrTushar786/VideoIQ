@@ -14,13 +14,203 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      couples: {
+        Row: {
+          anniversary_date: string | null
+          created_at: string
+          id: string
+          partner1_id: string
+          partner2_id: string
+          relationship_status: string | null
+          updated_at: string
+        }
+        Insert: {
+          anniversary_date?: string | null
+          created_at?: string
+          id?: string
+          partner1_id: string
+          partner2_id: string
+          relationship_status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          anniversary_date?: string | null
+          created_at?: string
+          id?: string
+          partner1_id?: string
+          partner2_id?: string
+          relationship_status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "couples_partner1_id_fkey"
+            columns: ["partner1_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "couples_partner2_id_fkey"
+            columns: ["partner2_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memories: {
+        Row: {
+          content: string | null
+          couple_id: string
+          created_at: string
+          created_by: string
+          id: string
+          image_url: string | null
+          memory_date: string | null
+          memory_type: string | null
+          title: string
+        }
+        Insert: {
+          content?: string | null
+          couple_id: string
+          created_at?: string
+          created_by: string
+          id?: string
+          image_url?: string | null
+          memory_date?: string | null
+          memory_type?: string | null
+          title: string
+        }
+        Update: {
+          content?: string | null
+          couple_id?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          image_url?: string | null
+          memory_date?: string | null
+          memory_type?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "memories_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "couples"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "memories_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          email: string
+          id: string
+          pair_code: string | null
+          partner_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          email: string
+          id?: string
+          pair_code?: string | null
+          partner_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          email?: string
+          id?: string
+          pair_code?: string | null
+          partner_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      video_calls: {
+        Row: {
+          call_duration: number | null
+          call_status: string | null
+          caller_id: string
+          couple_id: string
+          created_at: string
+          ended_at: string | null
+          id: string
+          started_at: string | null
+        }
+        Insert: {
+          call_duration?: number | null
+          call_status?: string | null
+          caller_id: string
+          couple_id: string
+          created_at?: string
+          ended_at?: string | null
+          id?: string
+          started_at?: string | null
+        }
+        Update: {
+          call_duration?: number | null
+          call_status?: string | null
+          caller_id?: string
+          couple_id?: string
+          created_at?: string
+          ended_at?: string | null
+          id?: string
+          started_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_calls_caller_id_fkey"
+            columns: ["caller_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "video_calls_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_pair_code: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
