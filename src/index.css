@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* CoupleConnect - Romantic Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Romantic Color Palette */
+    --background: 330 60% 98%;
+    --foreground: 340 15% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 340 15% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 340 15% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Romantic Primary - Rose Pink */
+    --primary: 340 75% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 340 85% 80%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Soft Secondary - Lavender */
+    --secondary: 280 35% 92%;
+    --secondary-foreground: 340 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Romantic Tones */
+    --muted: 320 20% 95%;
+    --muted-foreground: 340 12% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Romantic Accent - Soft Purple */
+    --accent: 280 45% 85%;
+    --accent-foreground: 340 15% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 320 25% 90%;
+    --input: 320 25% 95%;
+    --ring: 340 75% 65%;
 
-    --radius: 0.5rem;
+    /* Love Theme Colors */
+    --love-pink: 330 75% 75%;
+    --love-purple: 280 60% 70%;
+    --love-rose: 350 70% 80%;
+    --love-gold: 45 75% 75%;
+
+    /* Romantic Gradients */
+    --gradient-love: linear-gradient(135deg, hsl(var(--love-pink)), hsl(var(--love-purple)));
+    --gradient-sunset: linear-gradient(45deg, hsl(var(--love-rose)), hsl(var(--love-gold)));
+    --gradient-soft: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-heart: radial-gradient(circle, hsl(var(--primary-glow)), hsl(var(--primary)));
+
+    /* Romantic Shadows */
+    --shadow-romantic: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--love-pink) / 0.15);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+
+    /* Animations */
+    --transition-romantic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --bounce-heart: bounce 2s infinite;
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +126,63 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
   }
+
+  .font-script {
+    font-family: 'Dancing Script', cursive;
+  }
+}
+
+@layer components {
+  .gradient-love {
+    background: var(--gradient-love);
+  }
+  
+  .gradient-sunset {
+    background: var(--gradient-sunset);
+  }
+  
+  .gradient-soft {
+    background: var(--gradient-soft);
+  }
+  
+  .gradient-heart {
+    background: var(--gradient-heart);
+  }
+  
+  .shadow-romantic {
+    box-shadow: var(--shadow-romantic);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-romantic {
+    transition: var(--transition-romantic);
+  }
+  
+  .animate-heart {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }

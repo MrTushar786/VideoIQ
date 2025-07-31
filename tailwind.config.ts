@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -51,6 +52,12 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				love: {
+					pink: 'hsl(var(--love-pink))',
+					purple: 'hsl(var(--love-purple))',
+					rose: 'hsl(var(--love-rose))',
+					gold: 'hsl(var(--love-gold))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
