@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Video, Users } from "lucide-react";
 import { LoveIcon } from "./LoveIcon";
@@ -5,6 +6,7 @@ import { FloatingHearts } from "./FloatingHearts";
 import heroImage from "@/assets/hero-couple.jpg";
 
 export const CoupleHero = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center justify-center gradient-soft overflow-hidden">
       <FloatingHearts />
@@ -34,14 +36,23 @@ export const CoupleHero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="romantic" size="xl" className="group">
+              <Button 
+                variant="romantic" 
+                size="xl" 
+                className="group"
+                onClick={() => navigate("/auth")}
+              >
                 <Video className="w-5 h-5 group-hover:scale-110 transition-romantic" />
-                Start Video Call
+                Get Started
               </Button>
               
-              <Button variant="soft" size="xl">
+              <Button 
+                variant="soft" 
+                size="xl"
+                onClick={() => navigate("/auth")}
+              >
                 <Users className="w-5 h-5" />
-                Join Your Partner
+                Sign In
               </Button>
             </div>
 
