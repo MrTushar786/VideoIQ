@@ -11,6 +11,9 @@ interface Profile {
   avatar_url: string | null;
   pair_code: string | null;
   partner_id: string | null;
+  username: string | null;
+  bio: string | null;
+  last_seen: string;
   created_at: string;
   updated_at: string;
 }
@@ -24,6 +27,7 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
   connectWithPartner: (pairCode: string) => Promise<{ error: any }>;
+  updateProfile: (updates: Partial<Profile>) => Promise<{ error: any }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -220,6 +224,33 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const updateProfile = async (updates: Partial<Profile>) => {
+    if (!user || !profile) {
+      return { error: { message: "Please sign in first" } };
+    }
+
+    try {
+      const { error } = await supabase
+        .from('profiles')
+        .update(updates)
+        .eq('id', profile.id);
+
+      if (error) throw error;
+
+      // Refresh profile
+      await fetchProfile(user.id);
+
+      toast({
+        title: "Profile Updated",
+        description: "Your profile has been updated successfully.",
+      });
+
+      return { error: null };
+    } catch (error) {
+      return { error: { message: "Failed to update profile" } };
+    }
+  };
+
   const value: AuthContextType = {
     user,
     session,
@@ -228,7 +259,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     signUp,
     signIn,
     signOut,
-    connectWithPartner
+    connectWithPartner,
+    updateProfile
   };
 
   return (

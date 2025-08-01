@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Video, Heart, Calendar, MessageCircle, Settings, LogOut, Users } from "lucide-react";
+import { Video, Heart, Calendar, MessageCircle, Settings, LogOut, Users, GameController2, Image } from "lucide-react";
 import { LoveIcon } from "@/components/LoveIcon";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
@@ -247,10 +247,29 @@ export default function Dashboard() {
                   Virtual Date Night
                   <span className="ml-auto text-xs text-muted-foreground">Soon</span>
                 </Button>
-                <Button variant="ghost" className="w-full justify-start" disabled>
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  onClick={() => navigate("/chat")}
+                >
                   <MessageCircle className="w-4 h-4 mr-2" />
+                  Private Chat
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  onClick={() => navigate("/memories")}
+                >
+                  <Image className="w-4 h-4 mr-2" />
                   Memory Timeline
-                  <span className="ml-auto text-xs text-muted-foreground">Soon</span>
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start"
+                  onClick={() => navigate("/activities")}
+                >
+                  <GameController2 className="w-4 h-4 mr-2" />
+                  Couple Activities
                 </Button>
                 <Button variant="ghost" className="w-full justify-start" disabled>
                   <Heart className="w-4 h-4 mr-2" />
