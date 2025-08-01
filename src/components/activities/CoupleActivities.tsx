@@ -5,16 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { 
-  Heart, 
-  GameController2, 
-  Calendar, 
-  MessageCircle, 
-  Trophy,
-  Play,
-  Pause,
-  RotateCcw
-} from 'lucide-react';
+import { Heart, TowerControl as GameController2, Calendar, MessageCircle, Trophy, Play, Pause, RotateCcw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 interface Activity {
