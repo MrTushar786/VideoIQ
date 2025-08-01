@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Video, Heart, Calendar, MessageCircle, Settings, LogOut, Users, GameController2, Image } from "lucide-react";
+import { Video, Heart, Calendar, MessageCircle, Settings, LogOut, Users, TowerControl as GameController2, Image } from "lucide-react";
 import { LoveIcon } from "@/components/LoveIcon";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
